@@ -27,6 +27,11 @@ steps:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: '**/*.jar'
     TargetFolder: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed() 
+  condition: succeededOrFailed()
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
 
   
